@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'SoulNetwork_Example' do
+  pod 'SoulNetwork', :path => '../'
+
+  target 'SoulNetwork_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
