@@ -1,0 +1,6 @@
+framework module SoulNetwork {
+  umbrella header "SoulNetwork-umbrella.h"
+
+  export *
+  module * { export * }
+}

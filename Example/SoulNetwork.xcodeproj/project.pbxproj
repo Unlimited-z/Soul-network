@@ -28,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C7D37978709E411A4E42588 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		0C7D37978709E411A4E42588 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2E6FE38232E5063B43BCE55A /* Pods-SoulNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoulNetwork_Example.debug.xcconfig"; path = "Target Support Files/Pods-SoulNetwork_Example/Pods-SoulNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3F060238E8CF6E5BD1EC7B04 /* Pods_SoulNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoulNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4298D0303BAE4285AEF526B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		4298D0303BAE4285AEF526B6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SoulNetwork_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoulNetwork_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		84405C2B3EE60CE240C2F8B3 /* Pods_SoulNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoulNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		907BE7E02DDE634F7819DE88 /* SoulNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SoulNetwork.podspec; path = ../SoulNetwork.podspec; sourceTree = "<group>"; };
+		907BE7E02DDE634F7819DE88 /* SoulNetwork.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SoulNetwork.podspec; path = ../SoulNetwork.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93E1D727E0579D4718C7B76D /* Pods-SoulNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoulNetwork_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SoulNetwork_Tests/Pods-SoulNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1E1267CF7ED669002DBB335 /* Pods-SoulNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoulNetwork_Example.release.xcconfig"; path = "Target Support Files/Pods-SoulNetwork_Example/Pods-SoulNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C49764F8111C2071A94295E2 /* Pods-SoulNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoulNetwork_Tests.release.xcconfig"; path = "Target Support Files/Pods-SoulNetwork_Tests/Pods-SoulNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,7 +77,6 @@
 				93E1D727E0579D4718C7B76D /* Pods-SoulNetwork_Tests.debug.xcconfig */,
 				C49764F8111C2071A94295E2 /* Pods-SoulNetwork_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

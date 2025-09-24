@@ -1,0 +1,16 @@
+PODS:
+  - SoulNetwork (0.1.0)
+
+DEPENDENCIES:
+  - SoulNetwork (from `../`)
+
+EXTERNAL SOURCES:
+  SoulNetwork:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SoulNetwork: 91155d93c70000dcf4bf4852063da859dabd7625
+
+PODFILE CHECKSUM: cf01d549d42e27b6a8d886a419878b07dcd15a74
+
+COCOAPODS: 1.16.2

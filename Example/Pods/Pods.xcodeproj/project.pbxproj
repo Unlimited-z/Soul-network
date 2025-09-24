@@ -1,0 +1,834 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C08B1DAB5BD0FA6A7D5F433FD113986 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		12C7258B468EEDD2067E1BF6B9051E5E /* Pods-SoulNetwork_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 36ABF12F800974C3B2DFEE517F545361 /* Pods-SoulNetwork_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		250A845AEC7656C3B86F261DDA9BDB45 /* Pods-SoulNetwork_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFA4FB5F7E4D37BC7C007988E9391D7F /* Pods-SoulNetwork_Example-dummy.m */; };
+		38D2C865C07B93B14865CA666291BBB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		39646819DA4AF256C2BD1A593C2D5B2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		986286DA2E82F6E30042DCBB /* LoginNetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986286D52E82F6E30042DCBB /* LoginNetworkProtocols.swift */; };
+		986286DB2E82F6E30042DCBB /* DoubaoImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986286D22E82F6E30042DCBB /* DoubaoImageService.swift */; };
+		986286DC2E82F6E30042DCBB /* RegisterNetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986286D62E82F6E30042DCBB /* RegisterNetworkProtocols.swift */; };
+		986286DD2E82F6E30042DCBB /* AuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986286D42E82F6E30042DCBB /* AuthServiceManager.swift */; };
+		986286DE2E82F6E30042DCBB /* SoulNetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986286D82E82F6E30042DCBB /* SoulNetworkProtocol.swift */; };
+		986286DF2E82F6E30042DCBB /* DoubaoAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986286D12E82F6E30042DCBB /* DoubaoAIService.swift */; };
+		CBB4CB3591A3D52CCDB26076BB802AE3 /* SoulNetwork-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 01B3A7DE05C9294D938A3504417BA2F0 /* SoulNetwork-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CBFC26929E829B29B1D0A65002315C59 /* Pods-SoulNetwork_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7238AE407381FEF7402CC43A61C5A07 /* Pods-SoulNetwork_Tests-dummy.m */; };
+		F15C53A4C76045FFC3BCD4AC3B33F12C /* Pods-SoulNetwork_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EAA510B21E94D5396088D62A1FB03F1 /* Pods-SoulNetwork_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAE97A1ECAC99FC1832F6ABDC1EFF3E3 /* SoulNetwork-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AF0B42F40EC88F08707D9F39C9FB0F1 /* SoulNetwork-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4887E23AA68E620D8C18453361574C5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB8BC3A660878D5766DD62DEBB765759;
+			remoteInfo = SoulNetwork;
+		};
+		5A094E93EC46E7887427B5D6EACFCF67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B66EE51BCCD45D7D6DFEA9EE124B02;
+			remoteInfo = "Pods-SoulNetwork_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01B3A7DE05C9294D938A3504417BA2F0 /* SoulNetwork-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SoulNetwork-umbrella.h"; sourceTree = "<group>"; };
+		03B9530925EB9BF723E55D72EE7A085F /* SoulNetwork-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SoulNetwork-prefix.pch"; sourceTree = "<group>"; };
+		08E18F4A82ADFD5DA5217C760D42B0A9 /* Pods-SoulNetwork_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SoulNetwork_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		26BD55E9D71EBAAE77120C3B65FD1B54 /* SoulNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoulNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28ABD9A7495CD8373E7A83DE2E5543E2 /* Pods-SoulNetwork_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SoulNetwork_Example.modulemap"; sourceTree = "<group>"; };
+		2BC5809511DDCE93C27263A7AD9E3FDB /* Pods-SoulNetwork_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SoulNetwork_Tests.modulemap"; sourceTree = "<group>"; };
+		33FB3375DF7F0F081EDAD5F596290B92 /* SoulNetwork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SoulNetwork.release.xcconfig; sourceTree = "<group>"; };
+		36ABF12F800974C3B2DFEE517F545361 /* Pods-SoulNetwork_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SoulNetwork_Tests-umbrella.h"; sourceTree = "<group>"; };
+		3732D10FE83EF3218F8C87D3C2CABB96 /* Pods-SoulNetwork_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SoulNetwork_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3EAA510B21E94D5396088D62A1FB03F1 /* Pods-SoulNetwork_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SoulNetwork_Example-umbrella.h"; sourceTree = "<group>"; };
+		455592AAF0FF4C890EC54216790B3C4C /* SoulNetwork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SoulNetwork.debug.xcconfig; sourceTree = "<group>"; };
+		49BBB2D7F2FFFA1102A9A5B8EE002475 /* Pods-SoulNetwork_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SoulNetwork_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		516311C1F9FDE7ACB3DBA8A125EF90B1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		541846BB9E95F313D3A8258EB19F467C /* Pods_SoulNetwork_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoulNetwork_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F75A53B05CBABFEB59489B0FCE5BAD9 /* Pods-SoulNetwork_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SoulNetwork_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		6AF0B42F40EC88F08707D9F39C9FB0F1 /* SoulNetwork-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SoulNetwork-dummy.m"; sourceTree = "<group>"; };
+		6DF53D019E340E639876F4FC2908B828 /* Pods-SoulNetwork_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SoulNetwork_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		713D828DBCE7977F78299572FE778314 /* SoulNetwork.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SoulNetwork.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7B099471B601141BB48FA6F4A43D9AE4 /* Pods-SoulNetwork_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SoulNetwork_Example.release.xcconfig"; sourceTree = "<group>"; };
+		813DB9271D6EC08EC7699483125F74E0 /* Pods-SoulNetwork_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SoulNetwork_Tests-Info.plist"; sourceTree = "<group>"; };
+		84C2EFCD4A769BB280A297FC557A7B5C /* Pods-SoulNetwork_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SoulNetwork_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		84E06A62A4B2B03E86651EC9A04964AB /* Pods-SoulNetwork_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SoulNetwork_Example-frameworks.sh"; sourceTree = "<group>"; };
+		90A37306D7E1F63F36846BDE0B9E5611 /* Pods_SoulNetwork_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoulNetwork_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90CF07B73E53D7C87CFA62CAE4BE5B79 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		986286D12E82F6E30042DCBB /* DoubaoAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoAIService.swift; sourceTree = "<group>"; };
+		986286D22E82F6E30042DCBB /* DoubaoImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubaoImageService.swift; sourceTree = "<group>"; };
+		986286D42E82F6E30042DCBB /* AuthServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceManager.swift; sourceTree = "<group>"; };
+		986286D52E82F6E30042DCBB /* LoginNetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkProtocols.swift; sourceTree = "<group>"; };
+		986286D62E82F6E30042DCBB /* RegisterNetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNetworkProtocols.swift; sourceTree = "<group>"; };
+		986286D82E82F6E30042DCBB /* SoulNetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoulNetworkProtocol.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A143A76E1F26B8DAE8C942340DA8E05D /* Pods-SoulNetwork_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SoulNetwork_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A6FF4C67D3CE41C7FFD9A67D317398A4 /* Pods-SoulNetwork_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SoulNetwork_Example-Info.plist"; sourceTree = "<group>"; };
+		AFA4FB5F7E4D37BC7C007988E9391D7F /* Pods-SoulNetwork_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SoulNetwork_Example-dummy.m"; sourceTree = "<group>"; };
+		E7238AE407381FEF7402CC43A61C5A07 /* Pods-SoulNetwork_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SoulNetwork_Tests-dummy.m"; sourceTree = "<group>"; };
+		EB9F6997237556728660073F5CF900A8 /* SoulNetwork.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SoulNetwork.modulemap; sourceTree = "<group>"; };
+		F55E0F7BAFDC06A08DA7CA35A207462D /* SoulNetwork-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SoulNetwork-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1AA62D2C9BBCC648F31B62D8FDC4311B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39646819DA4AF256C2BD1A593C2D5B2A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		418AAF6EC722E9A8D42BE2E1622E2B1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38D2C865C07B93B14865CA666291BBB4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C081C09A180AC3B42CF81AA397536B9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C08B1DAB5BD0FA6A7D5F433FD113986 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B6EADF6B830593DE4228664B29386A4 /* SoulNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				CB4B4B0CBA59013EAF8F55305DB53F15 /* Pod */,
+				EA887D91BE153854666D88ABD9CACC78 /* Support Files */,
+				986286D32E82F6E30042DCBB /* AI */,
+				986286D72E82F6E30042DCBB /* Auth */,
+				986286D92E82F6E30042DCBB /* Core */,
+			);
+			name = SoulNetwork;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		781B459201741CC19173FDFD1D06D677 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B6EADF6B830593DE4228664B29386A4 /* SoulNetwork */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		964A05A22889A1A20D5DB1C8684BB738 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				90A37306D7E1F63F36846BDE0B9E5611 /* Pods_SoulNetwork_Example.framework */,
+				541846BB9E95F313D3A8258EB19F467C /* Pods_SoulNetwork_Tests.framework */,
+				26BD55E9D71EBAAE77120C3B65FD1B54 /* SoulNetwork.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		986286D32E82F6E30042DCBB /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				986286D12E82F6E30042DCBB /* DoubaoAIService.swift */,
+				986286D22E82F6E30042DCBB /* DoubaoImageService.swift */,
+			);
+			name = AI;
+			path = SoulNetwork/Classes/AI;
+			sourceTree = "<group>";
+		};
+		986286D72E82F6E30042DCBB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				986286D42E82F6E30042DCBB /* AuthServiceManager.swift */,
+				986286D52E82F6E30042DCBB /* LoginNetworkProtocols.swift */,
+				986286D62E82F6E30042DCBB /* RegisterNetworkProtocols.swift */,
+			);
+			name = Auth;
+			path = SoulNetwork/Classes/Auth;
+			sourceTree = "<group>";
+		};
+		986286D92E82F6E30042DCBB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				986286D82E82F6E30042DCBB /* SoulNetworkProtocol.swift */,
+			);
+			name = Core;
+			path = SoulNetwork/Classes/Core;
+			sourceTree = "<group>";
+		};
+		B15118AABE92565E665D6BF9D24E61A8 /* Pods-SoulNetwork_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2BC5809511DDCE93C27263A7AD9E3FDB /* Pods-SoulNetwork_Tests.modulemap */,
+				84C2EFCD4A769BB280A297FC557A7B5C /* Pods-SoulNetwork_Tests-acknowledgements.markdown */,
+				A143A76E1F26B8DAE8C942340DA8E05D /* Pods-SoulNetwork_Tests-acknowledgements.plist */,
+				E7238AE407381FEF7402CC43A61C5A07 /* Pods-SoulNetwork_Tests-dummy.m */,
+				813DB9271D6EC08EC7699483125F74E0 /* Pods-SoulNetwork_Tests-Info.plist */,
+				36ABF12F800974C3B2DFEE517F545361 /* Pods-SoulNetwork_Tests-umbrella.h */,
+				6DF53D019E340E639876F4FC2908B828 /* Pods-SoulNetwork_Tests.debug.xcconfig */,
+				49BBB2D7F2FFFA1102A9A5B8EE002475 /* Pods-SoulNetwork_Tests.release.xcconfig */,
+			);
+			name = "Pods-SoulNetwork_Tests";
+			path = "Target Support Files/Pods-SoulNetwork_Tests";
+			sourceTree = "<group>";
+		};
+		C7332926D446C5C75B97BBCC9D4DF687 /* Pods-SoulNetwork_Example */ = {
+			isa = PBXGroup;
+			children = (
+				28ABD9A7495CD8373E7A83DE2E5543E2 /* Pods-SoulNetwork_Example.modulemap */,
+				3732D10FE83EF3218F8C87D3C2CABB96 /* Pods-SoulNetwork_Example-acknowledgements.markdown */,
+				08E18F4A82ADFD5DA5217C760D42B0A9 /* Pods-SoulNetwork_Example-acknowledgements.plist */,
+				AFA4FB5F7E4D37BC7C007988E9391D7F /* Pods-SoulNetwork_Example-dummy.m */,
+				84E06A62A4B2B03E86651EC9A04964AB /* Pods-SoulNetwork_Example-frameworks.sh */,
+				A6FF4C67D3CE41C7FFD9A67D317398A4 /* Pods-SoulNetwork_Example-Info.plist */,
+				3EAA510B21E94D5396088D62A1FB03F1 /* Pods-SoulNetwork_Example-umbrella.h */,
+				5F75A53B05CBABFEB59489B0FCE5BAD9 /* Pods-SoulNetwork_Example.debug.xcconfig */,
+				7B099471B601141BB48FA6F4A43D9AE4 /* Pods-SoulNetwork_Example.release.xcconfig */,
+			);
+			name = "Pods-SoulNetwork_Example";
+			path = "Target Support Files/Pods-SoulNetwork_Example";
+			sourceTree = "<group>";
+		};
+		CB4B4B0CBA59013EAF8F55305DB53F15 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				90CF07B73E53D7C87CFA62CAE4BE5B79 /* LICENSE */,
+				516311C1F9FDE7ACB3DBA8A125EF90B1 /* README.md */,
+				713D828DBCE7977F78299572FE778314 /* SoulNetwork.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				781B459201741CC19173FDFD1D06D677 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				964A05A22889A1A20D5DB1C8684BB738 /* Products */,
+				D54980C24B66309626A731F2F6FC66B2 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4801F62A6B08CD9B5410329F1A18FDE /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D54980C24B66309626A731F2F6FC66B2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7332926D446C5C75B97BBCC9D4DF687 /* Pods-SoulNetwork_Example */,
+				B15118AABE92565E665D6BF9D24E61A8 /* Pods-SoulNetwork_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EA887D91BE153854666D88ABD9CACC78 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EB9F6997237556728660073F5CF900A8 /* SoulNetwork.modulemap */,
+				6AF0B42F40EC88F08707D9F39C9FB0F1 /* SoulNetwork-dummy.m */,
+				F55E0F7BAFDC06A08DA7CA35A207462D /* SoulNetwork-Info.plist */,
+				03B9530925EB9BF723E55D72EE7A085F /* SoulNetwork-prefix.pch */,
+				01B3A7DE05C9294D938A3504417BA2F0 /* SoulNetwork-umbrella.h */,
+				455592AAF0FF4C890EC54216790B3C4C /* SoulNetwork.debug.xcconfig */,
+				33FB3375DF7F0F081EDAD5F596290B92 /* SoulNetwork.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SoulNetwork";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		82A83D0482851EB7A8D2885846EBE898 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBB4CB3591A3D52CCDB26076BB802AE3 /* SoulNetwork-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B945E94F036D7B2A9A645B0C3608F583 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12C7258B468EEDD2067E1BF6B9051E5E /* Pods-SoulNetwork_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB411F4B41576FD180CA32524E5B3B65 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F15C53A4C76045FFC3BCD4AC3B33F12C /* Pods-SoulNetwork_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		52B66EE51BCCD45D7D6DFEA9EE124B02 /* Pods-SoulNetwork_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D12B9080FCEA951EDEFFAC89CF76B82D /* Build configuration list for PBXNativeTarget "Pods-SoulNetwork_Example" */;
+			buildPhases = (
+				DB411F4B41576FD180CA32524E5B3B65 /* Headers */,
+				4DB794281B073402C66E4AE084F5998A /* Sources */,
+				1AA62D2C9BBCC648F31B62D8FDC4311B /* Frameworks */,
+				613B5C99002EB33A9DE1966FDEA980D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8259555E1671E4042FCE60080E724C81 /* PBXTargetDependency */,
+			);
+			name = "Pods-SoulNetwork_Example";
+			productName = Pods_SoulNetwork_Example;
+			productReference = 90A37306D7E1F63F36846BDE0B9E5611 /* Pods_SoulNetwork_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		59D2AB5A381EFD9F038C95259FC77569 /* Pods-SoulNetwork_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10258B247231AA190D97175B9C6D385E /* Build configuration list for PBXNativeTarget "Pods-SoulNetwork_Tests" */;
+			buildPhases = (
+				B945E94F036D7B2A9A645B0C3608F583 /* Headers */,
+				CA953E61ED3DC79E027DB5AA58BB8A76 /* Sources */,
+				C081C09A180AC3B42CF81AA397536B9F /* Frameworks */,
+				C812848621580936D2D672EAD8C7B385 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02611AF15A6156686DC5117F51AD74CC /* PBXTargetDependency */,
+			);
+			name = "Pods-SoulNetwork_Tests";
+			productName = Pods_SoulNetwork_Tests;
+			productReference = 541846BB9E95F313D3A8258EB19F467C /* Pods_SoulNetwork_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FB8BC3A660878D5766DD62DEBB765759 /* SoulNetwork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34382037BA6F3633258FD9F847F843CE /* Build configuration list for PBXNativeTarget "SoulNetwork" */;
+			buildPhases = (
+				82A83D0482851EB7A8D2885846EBE898 /* Headers */,
+				BC998102F4195E29B17F1B9E2E8E47AD /* Sources */,
+				418AAF6EC722E9A8D42BE2E1622E2B1E /* Frameworks */,
+				18D61FE6030711A24F19F29ABE89D701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoulNetwork;
+			productName = SoulNetwork;
+			productReference = 26BD55E9D71EBAAE77120C3B65FD1B54 /* SoulNetwork.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 964A05A22889A1A20D5DB1C8684BB738 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52B66EE51BCCD45D7D6DFEA9EE124B02 /* Pods-SoulNetwork_Example */,
+				59D2AB5A381EFD9F038C95259FC77569 /* Pods-SoulNetwork_Tests */,
+				FB8BC3A660878D5766DD62DEBB765759 /* SoulNetwork */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18D61FE6030711A24F19F29ABE89D701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		613B5C99002EB33A9DE1966FDEA980D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C812848621580936D2D672EAD8C7B385 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DB794281B073402C66E4AE084F5998A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				250A845AEC7656C3B86F261DDA9BDB45 /* Pods-SoulNetwork_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC998102F4195E29B17F1B9E2E8E47AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAE97A1ECAC99FC1832F6ABDC1EFF3E3 /* SoulNetwork-dummy.m in Sources */,
+				986286DA2E82F6E30042DCBB /* LoginNetworkProtocols.swift in Sources */,
+				986286DB2E82F6E30042DCBB /* DoubaoImageService.swift in Sources */,
+				986286DC2E82F6E30042DCBB /* RegisterNetworkProtocols.swift in Sources */,
+				986286DD2E82F6E30042DCBB /* AuthServiceManager.swift in Sources */,
+				986286DE2E82F6E30042DCBB /* SoulNetworkProtocol.swift in Sources */,
+				986286DF2E82F6E30042DCBB /* DoubaoAIService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA953E61ED3DC79E027DB5AA58BB8A76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBFC26929E829B29B1D0A65002315C59 /* Pods-SoulNetwork_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		02611AF15A6156686DC5117F51AD74CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SoulNetwork_Example";
+			target = 52B66EE51BCCD45D7D6DFEA9EE124B02 /* Pods-SoulNetwork_Example */;
+			targetProxy = 5A094E93EC46E7887427B5D6EACFCF67 /* PBXContainerItemProxy */;
+		};
+		8259555E1671E4042FCE60080E724C81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SoulNetwork;
+			target = FB8BC3A660878D5766DD62DEBB765759 /* SoulNetwork */;
+			targetProxy = 4887E23AA68E620D8C18453361574C5F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10CB53D6C121442198026CB849A76D65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F75A53B05CBABFEB59489B0FCE5BAD9 /* Pods-SoulNetwork_Example.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-SoulNetwork_Example/Pods-SoulNetwork_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SoulNetwork_Example/Pods-SoulNetwork_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		13F974B34A6F95823E7570FC24432C38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DF53D019E340E639876F4FC2908B828 /* Pods-SoulNetwork_Tests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-SoulNetwork_Tests/Pods-SoulNetwork_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SoulNetwork_Tests/Pods-SoulNetwork_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		18A844BE294CD3F8E96D845C855E6F69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 455592AAF0FF4C890EC54216790B3C4C /* SoulNetwork.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/SoulNetwork/SoulNetwork-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/SoulNetwork/SoulNetwork-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SoulNetwork/SoulNetwork.modulemap";
+				PRODUCT_MODULE_NAME = SoulNetwork;
+				PRODUCT_NAME = SoulNetwork;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		53F18CD89A6B0B271C4EBF2517D7B675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B099471B601141BB48FA6F4A43D9AE4 /* Pods-SoulNetwork_Example.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-SoulNetwork_Example/Pods-SoulNetwork_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SoulNetwork_Example/Pods-SoulNetwork_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7D4BFD88203B54C8D6A3DCB9958A8585 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33FB3375DF7F0F081EDAD5F596290B92 /* SoulNetwork.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/SoulNetwork/SoulNetwork-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/SoulNetwork/SoulNetwork-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SoulNetwork/SoulNetwork.modulemap";
+				PRODUCT_MODULE_NAME = SoulNetwork;
+				PRODUCT_NAME = SoulNetwork;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D299434AB35E7FD6F7921C8EF24742FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		F225685090EFEE3E1F224DA1E26912B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49BBB2D7F2FFFA1102A9A5B8EE002475 /* Pods-SoulNetwork_Tests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-SoulNetwork_Tests/Pods-SoulNetwork_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SoulNetwork_Tests/Pods-SoulNetwork_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10258B247231AA190D97175B9C6D385E /* Build configuration list for PBXNativeTarget "Pods-SoulNetwork_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13F974B34A6F95823E7570FC24432C38 /* Debug */,
+				F225685090EFEE3E1F224DA1E26912B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34382037BA6F3633258FD9F847F843CE /* Build configuration list for PBXNativeTarget "SoulNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18A844BE294CD3F8E96D845C855E6F69 /* Debug */,
+				7D4BFD88203B54C8D6A3DCB9958A8585 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D299434AB35E7FD6F7921C8EF24742FF /* Debug */,
+				7EE7A78859F657F6BEFC651185B43192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D12B9080FCEA951EDEFFAC89CF76B82D /* Build configuration list for PBXNativeTarget "Pods-SoulNetwork_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10CB53D6C121442198026CB849A76D65 /* Debug */,
+				53F18CD89A6B0B271C4EBF2517D7B675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
