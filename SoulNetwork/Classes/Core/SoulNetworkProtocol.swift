@@ -98,7 +98,30 @@ public class SoulNetworkManager {
     public static let shared = SoulNetworkManager()
     private let session = URLSession.shared
     
+    // JWT Token管理
+    private let jwtTokenKey = "soul_jwt_token"
+    
     private init() {}
+    
+    // 设置JWT Token
+    public func setJWTToken(_ token: String?) {
+        if let token = token {
+            UserDefaults.standard.set(token, forKey: jwtTokenKey)
+        } else {
+            UserDefaults.standard.removeObject(forKey: jwtTokenKey)
+        }
+    }
+    
+    // 获取JWT Token
+    public func getJWTToken() -> String? {
+        return UserDefaults.standard.string(forKey: jwtTokenKey)
+    }
+    
+    // 获取Authorization头
+    private func getAuthorizationHeader() -> String? {
+        guard let token = getJWTToken() else { return nil }
+        return "Bearer \(token)"
+    }
     
     public func addNetworkTask(_ task: SoulNetworkProtocol) {
         guard let url = URL(string: task.getAPIUrl()) else {
@@ -118,6 +141,12 @@ public class SoulNetworkManager {
             for (key, value) in headers {
                 request.setValue(value, forHTTPHeaderField: key)
             }
+        }
+        
+        // 自动添加Authorization头（如果用户已登录且没有手动设置）
+        if let authHeader = self.getAuthorizationHeader(),
+           request.value(forHTTPHeaderField: "Authorization") == nil {
+            request.setValue(authHeader, forHTTPHeaderField: "Authorization")
         }
         
         // 设置请求体

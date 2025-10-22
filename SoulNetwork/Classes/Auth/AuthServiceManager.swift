@@ -8,115 +8,174 @@
 import Foundation
 import UIKit
 
+// MARK: - Notification Extensions
+extension Notification.Name {
+    public static let userDidLogin = Notification.Name("userDidLogin")
+    public static let userDidLogout = Notification.Name("userDidLogout")
+    public static let tokenDidExpire = Notification.Name("tokenDidExpire")
+}
+
+// MARK: - JWT Token 结构
+public struct JWTPayload: Codable {
+    let exp: TimeInterval  // 过期时间戳
+    let iat: TimeInterval? // 签发时间戳
+    let sub: String?       // 主题（通常是用户ID）
+    let username: String?  // 用户名
+}
+
 // MARK: - 认证服务管理器
 public class AuthServiceManager {
     public static let shared = AuthServiceManager()
     
+    // MARK: - 用户状态管理
+    private let usernameKey = "SoulUsername"
+    
+    /// 当前用户是否已登录（包含token有效性检查）
+    public var isAuthenticated: Bool {
+        guard let token = SoulNetworkManager.shared.getJWTToken() else {
+            return false
+        }
+        return isTokenValid(token)
+    }
+    
+    /// 当前登录的用户名
+    public var currentUsername: String? {
+        return UserDefaults.standard.string(forKey: usernameKey)
+    }
+    
+    /// 获取JWT token
+    public var jwtToken: String? {
+        return SoulNetworkManager.shared.getJWTToken()
+    }
+    
+    /// 获取Authorization头的值（包含Bearer前缀）
+    public var authorizationHeader: String? {
+        guard let token = jwtToken else { return nil }
+        return "Bearer \(token)"
+    }
+    
     private init() {}
+    
+    // MARK: - JWT Token 校验方法
+    
+    /// 检查JWT token是否有效（未过期）
+    public func isTokenValid(_ token: String) -> Bool {
+        guard let payload = parseJWTPayload(from: token) else {
+            return false
+        }
+        
+        let currentTime = Date().timeIntervalSince1970
+        return payload.exp > currentTime
+    }
+    
+    /// 检查当前存储的token是否有效
+    public func isCurrentTokenValid() -> Bool {
+        guard let token = jwtToken else { return false }
+        return isTokenValid(token)
+    }
+    
+    /// 解析JWT token的payload部分
+    private func parseJWTPayload(from token: String) -> JWTPayload? {
+        let segments = token.components(separatedBy: ".")
+        guard segments.count == 3 else {
+            print("❌ JWT token格式无效")
+            return nil
+        }
+        
+        let payloadSegment = segments[1]
+        
+        // JWT使用Base64URL编码，需要处理padding
+        var base64String = payloadSegment
+        let remainder = base64String.count % 4
+        if remainder > 0 {
+            base64String += String(repeating: "=", count: 4 - remainder)
+        }
+        
+        // 将Base64URL转换为Base64
+        base64String = base64String
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+        
+        guard let data = Data(base64Encoded: base64String) else {
+            print("❌ JWT payload Base64解码失败")
+            return nil
+        }
+        
+        do {
+            let payload = try JSONDecoder().decode(JWTPayload.self, from: data)
+            return payload
+        } catch {
+            print("❌ JWT payload JSON解析失败: \(error)")
+            return nil
+        }
+    }
+    
+    /// 获取token的剩余有效时间（秒）
+    public func getTokenRemainingTime() -> TimeInterval? {
+        guard let token = jwtToken,
+              let payload = parseJWTPayload(from: token) else {
+            return nil
+        }
+        
+        let currentTime = Date().timeIntervalSince1970
+        let remainingTime = payload.exp - currentTime
+        return remainingTime > 0 ? remainingTime : 0
+    }
+    
+    /// 检查token是否即将过期（默认30分钟内）
+    public func isTokenExpiringSoon(within minutes: Int = 30) -> Bool {
+        guard let remainingTime = getTokenRemainingTime() else {
+            return true // 如果无法获取剩余时间，认为即将过期
+        }
+        
+        let thresholdSeconds = TimeInterval(minutes * 60)
+        return remainingTime <= thresholdSeconds
+    }
+    
+    /// 处理token过期的情况
+    public func handleTokenExpiry() {
+        print("🔒 Token已过期，执行自动登出")
+        
+        // 清除本地存储的用户信息
+        SoulNetworkManager.shared.setJWTToken(nil)
+        UserDefaults.standard.removeObject(forKey: usernameKey)
+        UserDefaults.standard.synchronize()
+        
+        // 发送token过期通知
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .tokenDidExpire, object: nil)
+            NotificationCenter.default.post(name: .userDidLogout, object: nil)
+        }
+    }
+    
+    /// 校验当前token，如果过期则自动处理
+    public func validateCurrentToken() -> Bool {
+        guard let token = jwtToken else {
+            return false
+        }
+        
+        if isTokenValid(token) {
+            return true
+        } else {
+            handleTokenExpiry()
+            return false
+        }
+    }
     
     // MARK: - 登录相关方法
     
-    /// 手机号密码登录
-    public func loginWithPhonePassword(phone: String, 
-                               password: String, 
-                               areaCode: String = "86",
-                               completion: @escaping (Result<LoginData, SoulNetworkError>) -> Void) {
+    /// 用户登录
+    public func login(username: String, 
+                     password: String,
+                     completion: @escaping (Result<LoginResponse, SoulNetworkError>) -> Void) {
         
-        let loginProtocol = SoulPhonePasswordLoginProtocol()
-        loginProtocol.phone = phone
-        loginProtocol.password = password
-        loginProtocol.areaCode = areaCode
-        
-        loginProtocol.startRequest(
-            success: { response in
-                self.handleLoginResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 手机号验证码登录
-    public func loginWithPhoneCode(phone: String,
-                           verificationCode: String,
-                           codeId: String,
-                           areaCode: String = "86",
-                           completion: @escaping (Result<LoginData, SoulNetworkError>) -> Void) {
-        
-        let loginProtocol = SoulPhoneCodeLoginProtocol()
-        loginProtocol.phone = phone
-        loginProtocol.verificationCode = verificationCode
-        loginProtocol.codeId = codeId
-        loginProtocol.areaCode = areaCode
-        
-        loginProtocol.startRequest(
-            success: { response in
-                self.handleLoginResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 邮箱登录
-    public func loginWithEmail(email: String,
-                       password: String,
-                       completion: @escaping (Result<LoginData, SoulNetworkError>) -> Void) {
-        
-        let loginProtocol = SoulEmailLoginProtocol()
-        loginProtocol.email = email
+        let loginProtocol = SoulUserLoginProtocol()
+        loginProtocol.username = username
         loginProtocol.password = password
         
         loginProtocol.startRequest(
             success: { response in
-                self.handleLoginResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 第三方登录
-    public func loginWithThirdParty(platform: String,
-                            accessToken: String,
-                            openId: String,
-                            unionId: String? = nil,
-                            userInfo: [String: Any]? = nil,
-                            completion: @escaping (Result<LoginData, SoulNetworkError>) -> Void) {
-        
-        let loginProtocol = SoulThirdPartyLoginProtocol()
-        loginProtocol.platform = platform
-        loginProtocol.accessToken = accessToken
-        loginProtocol.openId = openId
-        loginProtocol.unionId = unionId
-        loginProtocol.userInfo = userInfo
-        
-        loginProtocol.startRequest(
-            success: { response in
-                self.handleLoginResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 发送登录验证码
-    public func sendLoginCode(phone: String,
-                      areaCode: String = "86",
-                      completion: @escaping (Result<VerificationCodeData, SoulNetworkError>) -> Void) {
-        
-        let codeProtocol = SoulSendLoginCodeProtocol()
-        codeProtocol.phone = phone
-        codeProtocol.areaCode = areaCode
-        codeProtocol.codeType = "login"
-        
-        codeProtocol.startRequest(
-            success: { response in
-                self.handleCodeResponse(response: response, completion: completion)
+                self.handleLoginResponse(response: response, username: username, completion: completion)
             },
             failure: { error in
                 completion(.failure(error))
@@ -126,24 +185,16 @@ public class AuthServiceManager {
     
     // MARK: - 注册相关方法
     
-    /// 手机号注册
-    public func registerWithPhone(phone: String,
-                          password: String,
-                          verificationCode: String,
-                          codeId: String,
-                          areaCode: String = "86",
-                          nickname: String? = nil,
-                          inviteCode: String? = nil,
-                          completion: @escaping (Result<RegisterData, SoulNetworkError>) -> Void) {
+    /// 用户注册
+    public func register(username: String,
+                         password: String,
+                         nickname: String,
+                         completion: @escaping (Result<RegisterResponse, SoulNetworkError>) -> Void) {
         
-        let registerProtocol = SoulPhoneRegisterProtocol()
-        registerProtocol.phone = phone
+        let registerProtocol = SoulUserRegisterProtocol()
+        registerProtocol.username = username
         registerProtocol.password = password
-        registerProtocol.verificationCode = verificationCode
-        registerProtocol.codeId = codeId
-        registerProtocol.areaCode = areaCode
         registerProtocol.nickname = nickname
-        registerProtocol.inviteCode = inviteCode
         
         registerProtocol.startRequest(
             success: { response in
@@ -155,235 +206,62 @@ public class AuthServiceManager {
         )
     }
     
-    /// 邮箱注册
-    public func registerWithEmail(email: String,
-                          password: String,
-                          verificationCode: String,
-                          codeId: String,
-                          nickname: String? = nil,
-                          inviteCode: String? = nil,
-                          completion: @escaping (Result<RegisterData, SoulNetworkError>) -> Void) {
-        
-        let registerProtocol = SoulEmailRegisterProtocol()
-        registerProtocol.email = email
-        registerProtocol.password = password
-        registerProtocol.verificationCode = verificationCode
-        registerProtocol.codeId = codeId
-        registerProtocol.nickname = nickname
-        registerProtocol.inviteCode = inviteCode
-        
-        registerProtocol.startRequest(
-            success: { response in
-                self.handleRegisterResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
+    // MARK: - 登出相关方法
     
-    /// 发送注册验证码
-    public func sendRegisterCode(phone: String? = nil,
-                         email: String? = nil,
-                         areaCode: String = "86",
-                         completion: @escaping (Result<VerificationCodeData, SoulNetworkError>) -> Void) {
+    /// 用户登出
+    public func signOut() throws {
+        // 清除本地存储的用户信息
+        SoulNetworkManager.shared.setJWTToken(nil)
+        UserDefaults.standard.removeObject(forKey: usernameKey)
+        UserDefaults.standard.synchronize()
         
-        let codeProtocol = SoulSendRegisterCodeProtocol()
-        codeProtocol.phone = phone
-        codeProtocol.email = email
-        codeProtocol.areaCode = areaCode
-        
-        codeProtocol.startRequest(
-            success: { response in
-                self.handleCodeResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    // MARK: - 可用性检查方法
-    
-    /// 检查手机号是否可用
-    public func checkPhoneAvailability(phone: String,
-                               areaCode: String = "86",
-                               completion: @escaping (Result<CheckAvailabilityData, SoulNetworkError>) -> Void) {
-        
-        let checkProtocol = SoulCheckPhoneAvailabilityProtocol()
-        checkProtocol.phone = phone
-        checkProtocol.areaCode = areaCode
-        
-        checkProtocol.startRequest(
-            success: { response in
-                self.handleAvailabilityResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 检查邮箱是否可用
-    public func checkEmailAvailability(email: String,
-                               completion: @escaping (Result<CheckAvailabilityData, SoulNetworkError>) -> Void) {
-        
-        let checkProtocol = SoulCheckEmailAvailabilityProtocol()
-        checkProtocol.email = email
-        
-        checkProtocol.startRequest(
-            success: { response in
-                self.handleAvailabilityResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 检查昵称是否可用
-    public func checkNicknameAvailability(nickname: String,
-                                  completion: @escaping (Result<CheckAvailabilityData, SoulNetworkError>) -> Void) {
-        
-        let checkProtocol = SoulCheckNicknameAvailabilityProtocol()
-        checkProtocol.nickname = nickname
-        
-        checkProtocol.startRequest(
-            success: { response in
-                self.handleAvailabilityResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    // MARK: - Token 相关方法
-    
-    /// 刷新Token
-    public func refreshToken(refreshToken: String,
-                     completion: @escaping (Result<LoginData, SoulNetworkError>) -> Void) {
-        
-        let refreshProtocol = SoulRefreshTokenProtocol()
-        refreshProtocol.refreshToken = refreshToken
-        
-        refreshProtocol.startRequest(
-            success: { response in
-                self.handleLoginResponse(response: response, completion: completion)
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    /// 登出
-    public func logout(token: String,
-               completion: @escaping (Result<Void, SoulNetworkError>) -> Void) {
-        
-        let logoutProtocol = SoulLogoutProtocol()
-        logoutProtocol.token = token
-        
-        logoutProtocol.startRequest(
-            success: { _ in
-                completion(.success(()))
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
-    }
-    
-    // MARK: - 密码重置方法
-    
-    /// 重置密码
-    public func resetPassword(phone: String? = nil,
-                      email: String? = nil,
-                      verificationCode: String,
-                      codeId: String,
-                      newPassword: String,
-                      areaCode: String = "86",
-                      completion: @escaping (Result<Void, SoulNetworkError>) -> Void) {
-        
-        let resetProtocol = SoulResetPasswordProtocol()
-        resetProtocol.phone = phone
-        resetProtocol.email = email
-        resetProtocol.verificationCode = verificationCode
-        resetProtocol.codeId = codeId
-        resetProtocol.newPassword = newPassword
-        resetProtocol.areaCode = areaCode
-        
-        resetProtocol.startRequest(
-            success: { _ in
-                completion(.success(()))
-            },
-            failure: { error in
-                completion(.failure(error))
-            }
-        )
+        // 发送登出通知
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .userDidLogout, object: nil)
+        }
     }
     
     // MARK: - 私有方法
     
-    private func handleLoginResponse(response: Any, completion: @escaping (Result<LoginData, SoulNetworkError>) -> Void) {
+    private func handleLoginResponse(response: Any, username: String, completion: @escaping (Result<LoginResponse, SoulNetworkError>) -> Void) {
+        guard let json = response as? [String: Any] else {
+            completion(.failure(.parseError(NSError(domain: "AuthServiceManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "无效的响应格式"]))))
+            return
+        }
+        
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: response)
+            let jsonData = try JSONSerialization.data(withJSONObject: json)
             let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: jsonData)
             
-            if loginResponse.success, let data = loginResponse.data {
-                completion(.success(data))
-            } else {
-                let message = loginResponse.message ?? "登录失败"
-                completion(.failure(.apiError(message, loginResponse.code)))
+            // HTTP 200成功，保存用户信息
+            // 保存JWT token到网络管理器（后端返回的data字段包含JWT token）
+            SoulNetworkManager.shared.setJWTToken(loginResponse.data)
+            
+            // 保存用户名
+            UserDefaults.standard.set(username, forKey: usernameKey)
+            UserDefaults.standard.synchronize()
+            
+            // 发送登录成功通知
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .userDidLogin, object: nil)
             }
+            
+            completion(.success(loginResponse))
         } catch {
             completion(.failure(.decodingError(error)))
         }
     }
     
-    private func handleRegisterResponse(response: Any, completion: @escaping (Result<RegisterData, SoulNetworkError>) -> Void) {
+    private func handleRegisterResponse(response: Any, completion: @escaping (Result<RegisterResponse, SoulNetworkError>) -> Void) {
+        guard let json = response as? [String: Any] else {
+            completion(.failure(.parseError(NSError(domain: "AuthServiceManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "无效的响应格式"]))))
+            return
+        }
+        
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: response)
+            let jsonData = try JSONSerialization.data(withJSONObject: json)
             let registerResponse = try JSONDecoder().decode(RegisterResponse.self, from: jsonData)
-            
-            if registerResponse.success, let data = registerResponse.data {
-                completion(.success(data))
-            } else {
-                let message = registerResponse.message ?? "注册失败"
-                completion(.failure(.apiError(message, registerResponse.code)))
-            }
-        } catch {
-            completion(.failure(.decodingError(error)))
-        }
-    }
-    
-    private func handleCodeResponse(response: Any, completion: @escaping (Result<VerificationCodeData, SoulNetworkError>) -> Void) {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: response)
-            let codeResponse = try JSONDecoder().decode(VerificationCodeResponse.self, from: jsonData)
-            
-            if codeResponse.success, let data = codeResponse.data {
-                completion(.success(data))
-            } else {
-                let message = codeResponse.message ?? "发送验证码失败"
-                completion(.failure(.apiError(message, codeResponse.code)))
-            }
-        } catch {
-            completion(.failure(.decodingError(error)))
-        }
-    }
-    
-    private func handleAvailabilityResponse(response: Any, completion: @escaping (Result<CheckAvailabilityData, SoulNetworkError>) -> Void) {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: response)
-            let availabilityResponse = try JSONDecoder().decode(CheckAvailabilityResponse.self, from: jsonData)
-            
-            if availabilityResponse.success, let data = availabilityResponse.data {
-                completion(.success(data))
-            } else {
-                let message = availabilityResponse.message ?? "检查可用性失败"
-                completion(.failure(.apiError(message, availabilityResponse.code)))
-            }
+            completion(.success(registerResponse))
         } catch {
             completion(.failure(.decodingError(error)))
         }
